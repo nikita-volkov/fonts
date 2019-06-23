@@ -33,10 +33,10 @@ googleFont family =
     fontFaces = []
   }
 
-{-| Lift font-face definition into rules. -}
-fontFace : FontFace -> Rules
-fontFace definition =
+{-| Define a font, specifying a family name, its weight and its location. -}
+fontFace : String -> Int -> String -> Rules
+fontFace family weight uri =
   {
     googleFonts = [],
-    fontFaces = List.singleton definition
+    fontFaces = List.singleton { family = family, weight = weight, uri = uri }
   }
