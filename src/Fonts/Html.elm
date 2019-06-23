@@ -2,7 +2,7 @@ module Fonts.Html exposing (..)
 
 import Html exposing (..)
 import Html.Attributes as Attributes
-import Fonts.Rules as Rules exposing (Rules)
+import Fonts.Fonts as Fonts exposing (Fonts)
 import Fonts.Rendering as Rendering exposing (Rendering)
 
 {-| Generate a stylesheet in HTML.
@@ -19,7 +19,7 @@ E.g., a tag like this:
     </style>
 
 -}
-style : Rules -> Html msg
+style : Fonts -> Html msg
 style definition =
   node "style"
     [

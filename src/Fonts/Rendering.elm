@@ -1,7 +1,7 @@
 module Fonts.Rendering exposing (..)
 
 import Set exposing (Set)
-import Fonts.Rules as Rules exposing (Rules)
+import Fonts.Fonts as Fonts exposing (Fonts)
 import Fonts.FontFace as FontFace exposing (FontFace)
 import Fonts.Uris as Uris
 
@@ -34,7 +34,7 @@ googleFonts families = if List.isEmpty families
 fontFaces : List FontFace -> Rendering
 fontFaces = List.map fontFace >> Set.fromList >> Set.foldl (++) ""
 
-rules : Rules -> Rendering
+rules : Fonts -> Rendering
 rules definition =
   googleFonts definition.googleFonts ++
   fontFaces definition.fontFaces

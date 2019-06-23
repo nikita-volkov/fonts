@@ -1,24 +1,24 @@
-module Fonts.Rules exposing (..)
+module Fonts.Fonts exposing (..)
 
 import Fonts.FontFace as FontFace exposing (FontFace)
 
-type alias Rules =
+type alias Fonts =
   {
     googleFonts : List String,
     fontFaces : List FontFace
   }
 
-empty : Rules
+empty : Fonts
 empty = { googleFonts = [], fontFaces = [] }
 
-prepend : Rules -> Rules -> Rules
+prepend : Fonts -> Fonts -> Fonts
 prepend l r =
   {
     googleFonts = l.googleFonts ++ r.googleFonts,
     fontFaces = l.fontFaces ++ r.fontFaces
   }
 
-concat : List Rules -> Rules
+concat : List Fonts -> Fonts
 concat list =
   {
     googleFonts = List.concatMap .googleFonts list,
@@ -26,7 +26,7 @@ concat list =
   }
 
 {-| Import a google font by family name. -}
-googleFont : String -> Rules
+googleFont : String -> Fonts
 googleFont family =
   {
     googleFonts = List.singleton family,
@@ -34,7 +34,7 @@ googleFont family =
   }
 
 {-| Define a font, specifying a family name, its weight and its location. -}
-fontFace : String -> Int -> String -> Rules
+fontFace : String -> Int -> String -> Fonts
 fontFace family weight uri =
   {
     googleFonts = [],
