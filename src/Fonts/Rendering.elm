@@ -34,7 +34,11 @@ googleFonts families = if List.isEmpty families
 fontFaces : List FontFace -> Rendering
 fontFaces = List.map fontFace >> Set.fromList >> Set.foldl (++) ""
 
+stylesheets : List String -> Rendering
+stylesheets = List.map importUri >> String.concat
+
 rules : Fonts -> Rendering
 rules definition =
   googleFonts definition.googleFonts ++
+  stylesheets definition.stylesheets ++
   fontFaces definition.fontFaces
