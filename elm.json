@@ -6,7 +6,6 @@
     "version": "1.0.0",
     "exposed-modules": [
         "Fonts.BrowserDocument",
-        "Fonts.Extensions.Program",
         "Fonts.Extensions.Html",
         "Fonts.Fonts"
     ],
