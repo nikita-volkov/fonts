@@ -5,7 +5,7 @@
     "license": "MIT",
     "version": "1.0.0",
     "exposed-modules": [
-        "Fonts.Extensions.Component",
+        "Fonts.BrowserDocument",
         "Fonts.Extensions.Program",
         "Fonts.Extensions.Html",
         "Fonts.Fonts"
