@@ -9,10 +9,10 @@ googleFonts : List GoogleFont -> String
 googleFonts =
   let
     id x =
-      x.family ++ ":" ++ String.fromInt x.weight ++
+      Url.percentEncode x.family ++ ":" ++ String.fromInt x.weight ++
       (if x.italic then "i" else "")
     in
-      List.map (id >> Url.percentEncode) >>
+      List.map id >>
       Set.fromList >>
       Set.toList >>
       List.intersperse "|" >>
