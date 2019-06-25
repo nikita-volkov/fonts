@@ -3,6 +3,7 @@ module Fonts.Rendering exposing (..)
 import Set exposing (Set)
 import Fonts.Fonts as Fonts exposing (Fonts)
 import Fonts.FontFace as FontFace exposing (FontFace)
+import Fonts.GoogleFont as GoogleFont exposing (GoogleFont)
 import Fonts.Uris as Uris
 
 
@@ -26,10 +27,10 @@ fontFace definition =
   "  src: url(\"" ++ definition.uri ++ "\");\n" ++
   "}\n"
 
-googleFonts : List String -> Rendering
-googleFonts families = if List.isEmpty families
+googleFonts : List GoogleFont -> Rendering
+googleFonts list = if List.isEmpty list
   then ""
-  else importUri <| Uris.googleFonts (Set.fromList families)
+  else importUri <| Uris.googleFonts list
 
 fontFaces : List FontFace -> Rendering
 fontFaces = List.map fontFace >> Set.fromList >> Set.foldl (++) ""

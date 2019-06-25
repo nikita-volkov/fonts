@@ -1,10 +1,12 @@
 module Fonts.Fonts exposing (..)
 
 import Fonts.FontFace as FontFace exposing (FontFace)
+import Fonts.GoogleFont as GoogleFont exposing (GoogleFont)
+
 
 type alias Fonts =
   {
-    googleFonts : List String,
+    googleFonts : List GoogleFont,
     fontFaces : List FontFace,
     stylesheets : List String
   }
@@ -28,11 +30,11 @@ concat list =
     stylesheets = List.concatMap .stylesheets list
   }
 
-{-| Import a google font by family name. -}
-googleFont : String -> Fonts
-googleFont family =
+{-| Import a google font by specifying its family name, weight and whether its italic. -}
+googleFont : String -> Int -> Bool -> Fonts
+googleFont family weight italic =
   {
-    googleFonts = List.singleton family,
+    googleFonts = List.singleton { family = family, weight = weight, italic = italic },
     fontFaces = [],
     stylesheets = []
   }
