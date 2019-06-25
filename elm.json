@@ -7,7 +7,7 @@
     "exposed-modules": [
         "Fonts.Extensions.Component",
         "Fonts.Extensions.Program",
-        "Fonts.Html",
+        "Fonts.Extensions.Html",
         "Fonts.Fonts"
     ],
     "elm-version": "0.19.0 <= v < 0.20.0",

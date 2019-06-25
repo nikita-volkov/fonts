@@ -3,7 +3,7 @@ module Fonts.Extensions.Component exposing (..)
 import Browser exposing (Document)
 import Html exposing (Html)
 import Fonts.Fonts as Fonts exposing (Fonts)
-import Fonts.Html as Html
+import Fonts.Extensions.Html as Html
 
 
 {-| The record that you pass to `Browser.document`. -}

@@ -2,7 +2,7 @@ module Fonts.Extensions.Program exposing (..)
 
 import Browser exposing (..)
 import Fonts.Fonts as Fonts exposing (Fonts)
-import Fonts.Html as Html
+import Fonts.Extensions.Html as Html
 
 
 documentWithFonts :

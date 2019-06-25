@@ -1,4 +1,4 @@
-module Fonts.Html exposing (..)
+module Fonts.Extensions.Html exposing (..)
 
 import Html exposing (..)
 import Html.Attributes as Attributes
