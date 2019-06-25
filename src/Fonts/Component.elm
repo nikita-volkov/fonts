@@ -1,4 +1,4 @@
-module Fonts.BrowserDocument exposing (..)
+module Fonts.Component exposing (..)
 
 import Browser exposing (Document)
 import Html exposing (Html)
@@ -7,7 +7,7 @@ import Fonts.Extensions.Html as Html
 
 
 {-| The record that you pass to `Browser.document`. -}
-type alias BrowserDocument flags msg model =
+type alias Component flags msg model =
   {
     init : flags -> ( model, Cmd msg ),
     view : model -> Document msg,
@@ -19,7 +19,7 @@ type alias BrowserDocument flags msg model =
 Extend an existing component specification
 with a functionality of preloading fonts.
 -}
-withFonts : Fonts -> BrowserDocument flags msg model -> BrowserDocument flags msg model
+withFonts : Fonts -> Component flags msg model -> Component flags msg model
 withFonts fonts component =
   let
     view model =
