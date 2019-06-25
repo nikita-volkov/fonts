@@ -1,4 +1,4 @@
-module Fonts.Program exposing (..)
+module Fonts.Extensions.Program exposing (..)
 
 import Browser exposing (..)
 import Fonts.Fonts as Fonts exposing (Fonts)
