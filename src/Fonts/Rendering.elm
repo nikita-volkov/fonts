@@ -22,6 +22,7 @@ importUri uri = "@import url('" ++ uri ++ "');\n"
 fontFace : FontFace -> Rendering
 fontFace definition =
   "@font-face {\n" ++
+  "  font-display: block;\n" ++
   "  font-family: " ++ definition.family ++ ";\n" ++
   "  font-weight: " ++ String.fromInt definition.weight ++ ";\n" ++
   "  src: url(\"" ++ definition.uri ++ "\");\n" ++
