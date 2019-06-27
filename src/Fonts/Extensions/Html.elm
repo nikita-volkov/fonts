@@ -2,7 +2,7 @@ module Fonts.Extensions.Html exposing (..)
 
 import Html exposing (..)
 import Html.Attributes as Attributes
-import Fonts.Fonts as Fonts exposing (Fonts)
+import Fonts.Types exposing (..)
 import Fonts.Rendering as Rendering exposing (Rendering)
 
 {-| Generate a stylesheet in HTML.
@@ -19,12 +19,12 @@ E.g., a tag like this:
     </style>
 
 -}
-style : Fonts -> Html msg
-style definition =
+style : List Font -> Html msg
+style fonts =
   node "style"
     [
       Attributes.type_ "text/css"
     ]
     [
-      text (Rendering.rules definition)
+      text (Rendering.fonts fonts)
     ]

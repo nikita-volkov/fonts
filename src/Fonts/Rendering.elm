@@ -1,9 +1,7 @@
 module Fonts.Rendering exposing (..)
 
 import Set exposing (Set)
-import Fonts.Fonts as Fonts exposing (Fonts)
-import Fonts.FontFace as FontFace exposing (FontFace)
-import Fonts.GoogleFont as GoogleFont exposing (GoogleFont)
+import Fonts.Types exposing (..)
 import Fonts.Uris as Uris
 
 
@@ -24,6 +22,7 @@ fontFace definition =
   "@font-face {\n" ++
   "  font-family: " ++ definition.family ++ ";\n" ++
   "  font-weight: " ++ String.fromInt definition.weight ++ ";\n" ++
+  (if definition.italic then "  font-style: italic;\n" else "") ++
   "  src: url(\"" ++ definition.uri ++ "\");\n" ++
   "}\n"
 
@@ -38,8 +37,19 @@ fontFaces = List.map fontFace >> Set.fromList >> Set.foldl (++) ""
 stylesheets : List String -> Rendering
 stylesheets = List.map importUri >> String.concat
 
-rules : Fonts -> Rendering
-rules definition =
-  googleFonts definition.googleFonts ++
-  stylesheets definition.stylesheets ++
-  fontFaces definition.fontFaces
+fonts : List Font -> Rendering
+fonts =
+  let
+    googleFontsValue =
+      List.filterMap <| \ font ->
+        case font of
+          GoogleFontFont googleFontValue -> Just googleFontValue
+          _ -> Nothing
+    fontFacesValue =
+      List.filterMap <| \ font ->
+        case font of
+          FontFaceFont fontFaceValue -> Just fontFaceValue
+          _ -> Nothing
+    in \ fontsValue ->
+      googleFonts (googleFontsValue fontsValue) ++
+      fontFaces (fontFacesValue fontsValue)
