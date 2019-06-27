@@ -18,6 +18,7 @@ importUri uri = "@import url('" ++ uri ++ "');\n"
 fontFace : FontFace -> String
 fontFace definition =
   "@font-face {\n" ++
+  "  font-display: block;\n" ++
   "  font-family: " ++ definition.family ++ ";\n" ++
   "  font-weight: " ++ String.fromInt definition.weight ++ ";\n" ++
   (if definition.italic then "  font-style: italic;\n" else "") ++

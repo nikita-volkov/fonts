@@ -16,5 +16,5 @@ googleFonts =
       Set.fromList >>
       Set.toList >>
       List.intersperse "|" >>
-      (::) "https://fonts.googleapis.com/css?family=" >>
+      (::) "https://fonts.googleapis.com/css?display=block&family=" >>
       String.concat
