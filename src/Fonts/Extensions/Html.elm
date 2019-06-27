@@ -3,7 +3,7 @@ module Fonts.Extensions.Html exposing (..)
 import Html exposing (..)
 import Html.Attributes as Attributes
 import Fonts.Types exposing (..)
-import Fonts.Rendering as Rendering exposing (Rendering)
+import Fonts.Stylesheet as Stylesheet
 
 {-| Generate a stylesheet in HTML.
 
@@ -26,5 +26,5 @@ style fonts =
       Attributes.type_ "text/css"
     ]
     [
-      text (Rendering.fonts fonts)
+      text (Stylesheet.fonts fonts)
     ]
