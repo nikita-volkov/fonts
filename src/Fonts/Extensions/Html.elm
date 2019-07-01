@@ -2,8 +2,10 @@ module Fonts.Extensions.Html exposing (..)
 
 import Html exposing (..)
 import Html.Attributes as Attributes
-import Fonts.Fonts as Fonts exposing (Fonts)
-import Fonts.Rendering as Rendering exposing (Rendering)
+import Html.Events as Events
+import Fonts.Types exposing (..)
+import Fonts.Stylesheet as Stylesheet
+import Json.Decode
 
 {-| Generate a stylesheet in HTML.
 
@@ -19,12 +21,30 @@ E.g., a tag like this:
     </style>
 
 -}
-style : Fonts -> Html msg
-style definition =
+style : List Font -> Html msg
+style fonts =
   node "style"
     [
+      Attributes.rel "stylesheet",
       Attributes.type_ "text/css"
     ]
     [
-      text (Rendering.rules definition)
+      text (Stylesheet.fonts fonts)
+    ]
+
+{-| 
+Same as `style`, but also subscribes to the "onload" event.
+
+Unfortunately, some browsers do not support it.
+-}
+styleWithOnLoad : msg -> List Font -> Html msg
+styleWithOnLoad onLoadMsg fonts =
+  node "style"
+    [
+      Attributes.rel "stylesheet",
+      Attributes.type_ "text/css",
+      Events.on "load" (Json.Decode.map (always onLoadMsg) Json.Decode.value)
+    ]
+    [
+      text (Stylesheet.fonts fonts)
     ]

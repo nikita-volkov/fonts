@@ -2,7 +2,7 @@ module Fonts.Uris exposing (..)
 
 import Set exposing (Set)
 import Url
-import Fonts.GoogleFont as GoogleFont exposing (GoogleFont)
+import Fonts.Types exposing (..)
 
 
 googleFonts : List GoogleFont -> String
