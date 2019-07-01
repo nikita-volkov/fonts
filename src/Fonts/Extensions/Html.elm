@@ -25,6 +25,7 @@ style : List Font -> Html msg
 style fonts =
   node "style"
     [
+      Attributes.rel "stylesheet",
       Attributes.type_ "text/css"
     ]
     [
@@ -40,6 +41,7 @@ styleWithOnLoad : msg -> List Font -> Html msg
 styleWithOnLoad onLoadMsg fonts =
   node "style"
     [
+      Attributes.rel "stylesheet",
       Attributes.type_ "text/css",
       Events.on "load" (Json.Decode.map (always onLoadMsg) Json.Decode.value)
     ]
