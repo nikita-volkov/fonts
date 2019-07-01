@@ -21,8 +21,23 @@ E.g., a tag like this:
     </style>
 
 -}
-style : msg -> List Font -> Html msg
-style onLoadMsg fonts =
+style : List Font -> Html msg
+style fonts =
+  node "style"
+    [
+      Attributes.type_ "text/css"
+    ]
+    [
+      text (Stylesheet.fonts fonts)
+    ]
+
+{-| 
+Same as `style`, but also subscribes to the "onload" event.
+
+Unfortunately, some browsers do not support it.
+-}
+styleWithOnLoad : msg -> List Font -> Html msg
+styleWithOnLoad onLoadMsg fonts =
   node "style"
     [
       Attributes.type_ "text/css",
